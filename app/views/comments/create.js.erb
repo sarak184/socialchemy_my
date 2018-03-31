@@ -1,0 +1,13 @@
+var newComment = $('<%= escape_javascript render "comment", comment: @comment %>');
+
+if ('<%= @comment.parent_type %>' == 'Post'){
+	$('#post<%= @comment.parent_id %> .post-comments-container ul.pcomment').prepend(newComment);
+
+}
+else if ('<%= @comment.parent_type %>'== 'Comment') {
+	
+	console.log('#comment<%=@comment.parent_id %>.comment-comments-container ul.ccomment');
+	
+	$('#comment<%=@comment.parent_id %>>.comment-comments-container ul.ccomment').append('<%= escape_javascript render "comment", comment: @comment %>');
+
+}

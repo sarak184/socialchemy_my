@@ -1,0 +1,6 @@
+<h3> Update Post </h3>
+<%= form_for @post do |p| %>
+<%= p.label :content, "Content" %>
+<%= p.text_field :content %>
+<%= p.submit %>
+<%end%>

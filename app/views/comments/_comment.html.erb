@@ -1,0 +1,33 @@
+<li id="comment<%=comment.id%>">
+	<p class="comment-content"><%= comment.content %></p>
+	<p class="comment-user">
+		<small>
+			By <%= comment.user.email %> at <%= comment.created_at.to_date %>
+			<%= link_to "Delete", comment_destroy_path(comment.id),  :method => 'delete' ,remote: true %>
+		</small>
+	</p>
+	<div class ="comment-comments-container">
+	              <ul class="ccomment" >
+		          <% comment.comments.reverse.each do |cm| %>
+	               
+	              
+	               <%= render 'comments/comment', comment: cm %>
+	               
+	               <% end %>
+	               
+	            </ul>
+	            </div>
+	         
+             <% if comment.parent_type == 'Post' %>
+				
+				 	
+	            <%= form_for @comment,url: comments_path, method: :post, remote: true do |f| %>
+	               <input type="hidden" name="comment[parent_type]" value="Comment">
+	               <input type="hidden" name="comment[parent_id]" value="<%=comment.id %>">
+	               <%= f.label :content, "reply" %>
+	               <%= f.text_field :content %>
+	               <%= f.submit %>
+
+	               <%end%>
+	               <%end%>
+</li>

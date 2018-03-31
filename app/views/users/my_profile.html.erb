@@ -1,0 +1,18 @@
+<main>
+	<h1>User Profile</h1>
+	<%= image_tag current_user.avatar(:thumb) %>
+	<%= form_for @user do |f| %>
+	<div class="form-field">
+		<%= f.label :email%>
+		<%= f.email_field :email%>
+	</div>
+	<div class="form-field">
+		<%= f.label :avatar%>
+		<%= f.file_field :avatar%>
+	</div>
+	<div class="form-field">
+		<%= f.submit "Update Profile" %>
+		
+	</div>
+	<% end %>
+</main>
