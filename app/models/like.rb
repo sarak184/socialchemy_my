@@ -1,4 +1,5 @@
 class Like < ActiveRecord::Base
-	belongs_to :parent
+	belongs_to :user
+	belongs_to :parent, polymorphic: true
 	
 end

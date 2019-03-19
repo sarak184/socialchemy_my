@@ -13,13 +13,16 @@ main{
 .center-container{
 	
 	margin-left:391px;
+  -webkit-box-sizing: content-box;
 }
 .posts-list-container{
+ 
 
 ul#p{
 	list-style:none;
 	background-color: #e5e5f3;
     width: 486px;
+    -webkit-box-sizing: content-box;
 }
 a{
 	text-decoration:none;
@@ -28,6 +31,7 @@ a{
 
 li
 {
+   margin-bottom: 45px;
   .post-list{
 
   margin-bottom:70px;

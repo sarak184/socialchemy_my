@@ -14,3 +14,40 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+window.addEventListener('load', function(){
+    var user_email=$('#current_user_email').html();
+    if(user_email){
+	var socket=io.connect('http://localhost:8000');
+
+	socket.on('connect', function(){
+		console.log('connected to node server');
+		//chat to a specific user
+	socket.emit('join_room',{
+
+		user_email: user_email,
+		chatroom: "iosroom"
+	});
+
+	socket.on('user_joined', function(data){
+		
+		console.log(data.user_email +' joined '+ data.chatroom);
+
+
+
+	});
+
+	$('#send-message').click(function(){
+
+		let msg=$('#chat-message-input').val();
+		if(message!=''){
+			socket.emit('send_message',{ message: msg,
+			                             user_email: user_email,
+			                             chatroom: "iosroom" });
+		}
+	});
+	});
+
+}
+});
+
+

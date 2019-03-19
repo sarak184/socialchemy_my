@@ -3,6 +3,11 @@
 	<%= image_tag current_user.avatar(:thumb) %>
 	<%= form_for @user do |f| %>
 	<div class="form-field">
+    <%= f.label :UserName %>
+    <%= f.text_field :username %>
+  </div>
+
+	<div class="form-field">
 		<%= f.label :email%>
 		<%= f.email_field :email%>
 	</div>

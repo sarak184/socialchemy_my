@@ -6,6 +6,7 @@ class UsersController < ApplicationController
 
 	def update
 		current_user.update(
+			username: params[:user][:username],
 			email: params[:user][:email],
 			avatar: params[:user][:avatar]
 

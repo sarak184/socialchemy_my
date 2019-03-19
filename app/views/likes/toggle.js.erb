@@ -1,0 +1,36 @@
+  var count = <%= Like.where(parent_id: params[:parent_id], parent_type: params[:parent_type]).length %>;
+
+  var like = 'Unlike <i class="fa fa-thumbs-o-up"></i>';
+ <% if params[:parent_type] == "Post" %>
+	
+	
+	if (<%= @liked %> == true){
+		$("#post" + <%= params[:parent_id] %> + ">.post-likes>.like-status>a").html(like);
+		$("#post" + <%= params[:parent_id] %> + ">.post-likes>.like-status>a").css("color","red");
+		$("#post" + <%= params[:parent_id] %> + ">.post-likes>.like-count").empty();
+        $("#post" + <%= params[:parent_id] %> + ">.post-likes>.like-count").append(count);
+		console.log(count);
+	}
+	else {
+      like = 'Like <i class="fa fa-thumbs-o-down"></i>';
+     $("#post" + <%= params[:parent_id] %> + ">.post-likes>.like-status>a").html(like);
+     $("#post" + <%= params[:parent_id] %> + ">.post-likes>.like-count").empty();
+        $("#post" + <%= params[:parent_id] %> + ">.post-likes>.like-count").append(count);
+	}
+<% elsif params[:parent_type]=="Comment" %>	
+    console.log("#comment111>.comment-likes>.like-status>a");
+    if (<%= @liked %> == true){
+		$("#comment"+<%= params[:parent_id] %> + ">.comment-comments-container>.comment-likes>.like-status>a").html(like);
+		
+		$("#comment"+<%= params[:parent_id] %> + ">.comment-likes>.like-count").empty();
+        $("#comment"+<%= params[:parent_id] %> + ">.comment-likes>.like-count").append(count);
+		console.log(count);
+
+	}
+	else {
+      like = 'Like <i class="fa fa-thumbs-o-down"></i>';
+     $("#comment" + <%= params[:parent_id] %> + ">.comment-comments-container>.comment-likes>.like-status>a").html(like);
+     $("#comment" + <%= params[:parent_id] %> + ">.comment-likes>.like-count").empty();
+        $("#comment" + <%= params[:parent_id] %> + ">.comment-likes>.like-count").append(count);
+	}
+<% end %>
